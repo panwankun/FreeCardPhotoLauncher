@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.alipay.bundle'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        applicationId "com.panda.free.card.launcher"
+        minSdkVersion 18
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenLocal()
+    }
+}
+
+version = "1.0.0"
+group = "com.panda.free.card"
+
+bundle {
+    exportPackages ''
+    initLevel 11110000
+    packageName 'com.panda.free.card.launcher'
+    packageId 36
+}
+
+dependencies {
+    implementation project(":api")
+    compileOnly 'com.alipay.android.phone.thirdparty:fastjson-api:1.1.45@jar'
+    compileOnly 'com.alipay.android.phone.thirdparty:androidsupport-api:13.23@jar'
+
+    provided "com.alipay.android.phone.mobilesdk:framework-api:2.1.1@jar"
+}
+
+apply plugin: 'com.alipay.apollo.baseline.update'
+mpaascomponents {
+    excludeDependencies = []
+}

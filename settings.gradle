@@ -1,0 +1,2 @@
+include ':api', ':freecardphoto-build'
+project(':freecardphoto-build').projectDir = new File('app')
